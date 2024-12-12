@@ -1,0 +1,71 @@
+This can be achieved in O(log n) time using the following approach:
+
+*For this description we're following the books convention of starting indexing at 1, so if X = [1,2,3,4] then X[1] = 1, X[2] = 2, etc..., and all log's are base 2
+
+Let X = an array of n elements (aka n = the length of the array)
+
+1. set our base cases:
+
+  -if n <= 1 then X only has one element and it must be its maximum element or it has no elements and no max, so return X[1] (intuitively if X[1] does not exist then we return nothing here since there's no answer)
+
+  -if n = 2, return max(X[1], X[2]), I included this in my base cases to avoid getting an index out of bounds error (trying to compare X[1] with X[0] in this case), but going through examples it seems to help minimize recursive calls as well
+
+3. let mid = floor((1 + n) / 2) (so if n = 8 mid will equal floor(9/2) = 4)
+
+3. if X[mid] > X[mid - 1] and X[mid] > X[mid + 1], return x
+
+4. else
+
+  -if X[mid + 1] > X[mid], recursively search right half of X (X[mid:])
+
+  -if X[mid - 1] > X[mid], recursively search left half of X (X[:mid])
+
+pseudocode:
+
+input: unimodal array of integers X of size n
+
+output: largest number in X
+
+maximum(X) {
+
+if n <= 1 {
+
+  return X[1]
+
+  }
+
+if n = 2 {
+
+  return max(X[1],X[2]
+
+  }
+
+mid = floor((1 + n) / 2)
+
+if X[mid] > X[mid + 1] and X[mid] > X[mid - 1] {
+
+  return X[mid]
+
+  }
+
+if X[mid - 1] > X[mid] {
+
+  X = X[:mid] //notation for everything in X before mid
+
+  maximum(X)
+
+  }
+
+if X[mid + 1] > X[mid] {
+
+  X = X[mid:] //notation for everything in X after mid
+
+  maximum(X)
+
+  }
+
+}
+
+explanation: 
+
+Given an array of size n this method will take time O(log n). This is because after each initial comparison the array size is reduced to (at most) n/2. This continues until the array size is either 1 or 2. For example: given an array of size 8 it will be reduced to size 4 then 2 preceding each recursive call, therefore we're only making log(8) - 1 = 2 calls, for an array of size 9 it will reduce to size 4 then 2 making only floor(log(9)) - 1 = 2 calls. So for n we must make at most floor(log n) - 1 calls. Note, if we didn't include n = 2 as a base case it would make log n calls. Each recursive call does a constant amount of work, therefore this runs in time O(log n)

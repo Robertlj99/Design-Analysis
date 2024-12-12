@@ -1,0 +1,73 @@
+Group for all answers in the set: Robert Johnson, Chris Johnson
+
+1. Theta(n^2)
+
+If it randomly chooses the worst possible pivot point every time
+ex: x = [1,2,3,4,5,6,7,8,9] 
+If it randomly selects the first index as its pivot point each time only one index will be removed each recursive call resulting in n^2 comparisons
+The chances of this are extremely low
+
+2. Theta(n log n) 
+
+If you randomly choose the median element every time
+This would split the array in half each recursive call, given that all work done outside of recursion is Theta(n):
+
+We get the recursion T(n) = 2 * T(n/2) + Theta(n) ->
+Applying the master method a = 2 = 2^1 = b^d ->
+T(n) = Theta(n log n)
+
+3. *All chosen pivots are randomly selected, for simplicity in this simulation they will be median points though*
+
+(main) A = [10, 25, 22, 64, 18, 26]
+
+pivot = 22
+
+partition -> A = [10, 18, 22, 25, 64, 26]
+
+  (1) quickSort(A = A[0, pivot -1])
+
+  A = [10, 18] 
+
+  pivot = 10
+
+  partition -> A = [10, 18]
+
+    (1.1) quickSort(A = A[0, pivot - 1])
+
+    A = 10, base-case: return
+
+    (1.2) quickSort(A = A[pivot + 1, n])
+
+    A = 18, base-case: return
+
+(main) A = [10, 18, 22, 25, 64, 26]
+
+  (2) quickSort(A = A[pivot + 1, n])
+
+  A = [64, 25, 26]
+
+  pivot = 25
+
+  partition -> A = [25, 64, 26]
+
+    (2.1) quicksort(A = A[0, pivot - 1])
+
+    A = [], base-case: return
+
+    (2.2) quicksort(A = A[pivot + 1, n])
+
+    A = [64, 26]
+
+    pivot = 64
+
+    partition -> A = [26, 64]
+
+      (2.2.1) quicksort(A = A[0, pivot - 1])
+
+      A = [26], base-case return
+
+      (2.2.2) quicksort(A = A[pivot + 1, n]
+
+      A = [], base-case return
+
+(main) A = [10, 18, 25, 26, 64]

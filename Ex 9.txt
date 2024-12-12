@@ -1,0 +1,19 @@
+1. Partners: Chris Johnson, Robert Johnson
+
+c) Theta(n + m)
+
+2. Partners: Chris Johnson, Robert Johnson
+
+d) Theta(n^2)
+
+3.Partners: Chris Johnson, Robert Johnson
+
+c) Theta(n)
+
+The corresponding adjacency matrix would be n x n (where n is the number of vertices). To identify every edge given vertex v you would have to check every row in the column associated with v (or you could check every column in the row associated with vertex v) either way it will require as many operations as their are vertex's which equals n
+
+4. Partners: Chris Johnson, Robert Johnson
+
+d) Theta(m)
+
+Since you cannot just go and check the vertex entry itself, you must go through the array of edges and check which ones have that vertex as its destination. This requires you to scan through the array of edges which takes m steps (where m is the number of edges)

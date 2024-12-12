@@ -1,0 +1,9 @@
+(a) (log b)
+
+makes a recursive call b/2 times, everything else is constant
+
+for example:
+
+if b = 5 level 0 will be n^5, level 1 will be n^2, and level 2 will be n^1 resulting in 2 calls which is less than or equal to log(5)
+
+if b = 8 level 0 will be n^8, level 1 will be n^4, level 2 will be n^2, level 3 will be n^1 resulting in 3 calls which is exactly equal to log(8)

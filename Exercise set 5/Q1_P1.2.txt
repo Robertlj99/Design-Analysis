@@ -1,0 +1,1 @@
+This implementation will result in at most ceiling(log_3 n) levels with each level doing c*n (where c is a constant) amount of work. The total work done, ignoring constant factors and lower ordered terms, is thus # of levels * work done per level = log n * n = n log n
